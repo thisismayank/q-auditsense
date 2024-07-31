@@ -1,12 +1,3 @@
-
-# The latest code is present in "development" branch, here are the steps to run the project
-
-1. Clone the repository
-2. Run `npm install`
-3. Run `npm start`
-4. Open [http://localhost:8000](http://localhost:8000) to view it in your browser.
-
-=======
 Client-side code - Please check the development branch for the latest code
 
 # Getting Started with Create React App
@@ -81,3 +72,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 # c-auditsense
+
+=======
+
+# q-auditsense
+
+Questionnaire code repository
