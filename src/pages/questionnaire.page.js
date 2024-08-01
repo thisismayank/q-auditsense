@@ -36,69 +36,82 @@ const QuestionnairePage = () => {
 
   console.log("params", params);
   const [activeStep, setActiveStep] = useState(0);
-  let initialData = {
-    date: moment().format("MMMM Do YYYY"),
-    vendorName: "",
-    facilityName: "",
-    facilityLegalName: "",
-    businessLicense: "",
-    facilityAddress: "",
-    facilityCity: "",
-    facilityState: "",
-    facilityCountry: "",
-    facilityZip: "",
-    dormitoriesPresent: "",
-    dormitoriesLocation: "",
+  const initialDataFromLocalStorage =
+    JSON.parse(localStorage.getItem("formData")) || {};
+  console.log("initialDataFromLocalStorage", initialDataFromLocalStorage);
 
-    kitchenPresent: "",
-    multipleTenants: "",
-    ownsBuildings: "",
-    yearWhenOperationInitiated: "",
-    totalEmployees: 0,
-    maleEmployees: 0,
-    femaleEmployees: 0,
-    managementStaff: 0,
-    productionWorkers: 0,
-    localProductionWorkers: 0,
-    domesticMigrantWorkers: 0,
-    foreignMigrantWorkers: 0,
-    laborAgentsUsed: "",
-    domesticLaborAgents: 0,
-    overseasLaborAgents: 0,
-    unionInFacility: "",
-    unionRep: "",
-    cbaInPlace: "",
-    productionPercentage: "",
-    primaryCustomers: "",
-    mainProductionProcesses: "",
-    facilityType: "",
-    mainProductType: "",
-    employSubcontractors: "",
-    subcontractorDetails: "",
-    bsciCertification: "",
-    bsciExpiryDate: "",
-    useCoal: "",
-    phaseOutCoal: "",
-    transparencyBusinessIntegrity: "",
-    managementSystems: "",
-    hiringDisciplinaryTermination: "",
-    // Add other fields similarly
-  };
+  let initialData = {};
+  if (initialDataFromLocalStorage) {
+    initialData = initialDataFromLocalStorage;
+  } else {
+    initialData = {
+      date: moment().format("MMMM Do YYYY"),
+      vendorName: "",
+      facilityName: "",
+      facilityLegalName: "",
+      businessLicense: "",
+      facilityAddress: "",
+      facilityCity: "",
+      facilityState: "",
+      facilityCountry: "",
+      facilityZip: "",
+      dormitoriesPresent: "",
+      dormitoriesLocation: "",
+
+      kitchenPresent: "",
+      multipleTenants: "",
+      ownsBuildings: "",
+      yearWhenOperationInitiated: "",
+      totalEmployees: 0,
+      maleEmployees: 0,
+      femaleEmployees: 0,
+      managementStaff: 0,
+      productionWorkers: 0,
+      localProductionWorkers: 0,
+      domesticMigrantWorkers: 0,
+      foreignMigrantWorkers: 0,
+      laborAgentsUsed: "",
+      domesticLaborAgents: 0,
+      overseasLaborAgents: 0,
+      unionInFacility: "",
+      unionRep: "",
+      cbaInPlace: "",
+      productionPercentage: "",
+      primaryCustomers: "",
+      mainProductionProcesses: "",
+      facilityType: "",
+      mainProductType: "",
+      employSubcontractors: "",
+      subcontractorDetails: "",
+      bsciCertification: "",
+      bsciExpiryDate: "",
+      useCoal: "",
+      phaseOutCoal: "",
+      transparencyBusinessIntegrity: "",
+      managementSystems: "",
+      hiringDisciplinaryTermination: "",
+      // Add other fields similarly
+    };
+  }
   const [formData, setFormData] = useState(initialData);
 
   const handleChange = (field) => (event) => {
     // console.log("event", event);
-    setFormData({
+    const dataToBeSaved = {
       ...formData,
       [field]: event.target.value,
-    });
+    };
+    setFormData(dataToBeSaved);
+    localStorage.setItem("formData", JSON.stringify(dataToBeSaved));
   };
 
   const handleAddress = (field, value) => {
-    setFormData({
+    const dataToBeSaved = {
       ...formData,
       [field]: value,
-    });
+    };
+    setFormData(dataToBeSaved);
+    localStorage.setItem("formData", JSON.stringify(dataToBeSaved));
   };
   useEffect(() => {
     if (
